@@ -1,0 +1,28 @@
+@mixin container($width: 1080px) {
+  max-width: $width;
+  margin: 0 auto;
+}
+
+@mixin flex($justify-content: null, $align-items: null,$direction: null){
+  display: flex;
+  justify-content: $justify-content;
+  align-items: $align-items;
+  flex-direction: $direction;
+}
+
+@mixin tablet-up {
+  @media(min-width: 720px){
+    @content
+  }
+};
+
+@mixin laptop-up {
+  @media(min-width: 1080px){
+    @content
+  }
+}; 
+
+//Functions
+@function em($px){
+  @return ($px/$font-size-base)+em;
+}

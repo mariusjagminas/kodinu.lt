@@ -1,0 +1,48 @@
+.card {
+  max-width: em(510);
+}
+
+.card__header, .card__text {
+  color: $color-text;
+  margin: 0;
+}
+
+.card--header-section {
+  margin-top: em(80);
+  margin-bottom: em(36);
+}
+
+.card__header {
+  font-size: em(55);
+  letter-spacing: em(-0.6);
+  padding-bottom: em(3);
+}
+
+.card__text {
+  font-size: em(20);
+}
+
+// **********************************************
+// Button
+// **********************************************
+
+.btn {
+  text-transform: uppercase;
+  font-size: em(20);
+  font-weight: bold;
+  color: $color-text;
+  background: transparent;
+  border: 1px solid $color-text;
+  border-radius: em(20);
+  width: em(199);
+  padding: em(11) 0;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $color-active;
+  }
+}
+
+.btn--with-margin {
+  margin-left: em(17);
+}

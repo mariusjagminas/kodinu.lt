@@ -1,3 +1,89 @@
-h1 { 
-  color: red;
+.header {
+  width: 100%;
+  height: em(670);
+  background: url('../images/header-background.svg');
+  background-repeat: no-repeat;
+  background-size: em(2224);
+  background-position: em(-198) em(-19);
+}
+
+.header__container {
+  @include container(1120px);
+}
+
+.header__items-wrapper {
+  width: 100%;
+  height: em(155);
+  @include flex(flex-end, center);
+}
+
+// ***************************************************
+// Logo
+// ***************************************************
+
+.logo {
+  font-family: 'Varela Round', sans-serif;
+  font-weight: 500;
+  font-size:  em(51);
+  letter-spacing: em(-0.7);
+  line-height: 0.8;
+  color: $color-text;
+  margin: 0 auto 0 0 ;
+  transform: translateY(em(5))
+}
+
+.logo__subtitle {
+  font-size: em(8.8); 
+}
+
+// ******************************************************
+// Social media links
+// ******************************************************
+
+.s-media {
+  @include flex(space-between);
+  width: em(118);
+  margin-right: em(57);
+}
+
+.s-media__item {
+
+}
+
+.s-media__link { 
+  font-size: em(21);
+  color: $color-text;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $color-active;
+  }
+}
+
+//*******************************************************
+// Navigation
+//*******************************************************
+
+.navigation {
+}
+
+.navigation__list {
+  @include flex(space-between);
+  width: em(600);
+}
+
+.navigation__item {
+
+}
+
+.navigation__link {
+  text-transform: uppercase;
+  font-size: em(20);
+  font-weight: 600;
+  color: $color-text;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $color-active;
+  }
 }
