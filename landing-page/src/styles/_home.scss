@@ -1,0 +1,23 @@
+.home {
+  @include flex(flex-start, center,column);
+  @include container(1160px,20px);
+  padding-top: 120px;
+
+  @include tablet-up {
+    align-items: flex-start;
+    padding-top: 80px;
+  }
+}
+
+.home__btn-wrapper {
+  @include flex(space-between,center,column);
+  height: 130px;
+  margin-top: 63px;
+  margin-bottom: 60px;
+
+  @include tablet-up {
+    flex-direction: row;
+    height: 0;
+    width: 522px;
+  }
+}

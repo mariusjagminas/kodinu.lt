@@ -1,6 +1,7 @@
-@mixin container($width: 1080px) {
+@mixin container($width: 1080px, $padding: 0) {
   max-width: $width;
   margin: 0 auto;
+  padding: 0 $padding
 }
 
 @mixin flex($justify-content: null, $align-items: null,$direction: null){
@@ -17,7 +18,7 @@
 };
 
 @mixin laptop-up {
-  @media(min-width: 1080px){
+  @media(min-width: 1150px){
     @content
   }
 }; 

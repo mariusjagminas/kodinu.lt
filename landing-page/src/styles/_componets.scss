@@ -1,15 +1,16 @@
 .card {
+  font-size: 3vw; // for component resizing
   max-width: em(510);
+  margin: 0;
+
+  @include tablet-up {
+    font-size: $font-size; // for component resizing
+  }
 }
 
 .card__header, .card__text {
   color: $color-text;
   margin: 0;
-}
-
-.card--header-section {
-  margin-top: em(80);
-  margin-bottom: em(36);
 }
 
 .card__header {
@@ -27,6 +28,7 @@
 // **********************************************
 
 .btn {
+  display: block;
   text-transform: uppercase;
   font-size: em(20);
   font-weight: bold;
@@ -43,6 +45,3 @@
   }
 }
 
-.btn--with-margin {
-  margin-left: em(17);
-}
