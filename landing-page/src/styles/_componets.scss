@@ -8,6 +8,14 @@
   }
 }
 
+.card--right-alignment {
+  text-align: right;
+
+  .card__decoration {
+    transform: translateX(124%);
+  }
+}
+
 .card__header, .card__text {
   color: $color-text;
   margin: 0;
@@ -19,8 +27,21 @@
   padding-bottom: em(3);
 }
 
+.card__header--h3 {
+  font-size: em(30);
+  padding-bottom: em(9);
+}
+
 .card__text {
   font-size: em(20);
+}
+
+.card__decoration {
+  width: 45%;
+  height: 9px;
+  margin-top: em(40);
+  border-radius: 5px;
+  background-color: $color-main;
 }
 
 // **********************************************
@@ -45,3 +66,10 @@
   }
 }
 
+// **************************************************
+// Text
+// **************************************************
+
+.text--dark {
+  color: $color-text-dark;
+}
