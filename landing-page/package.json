@@ -4,12 +4,17 @@
   "description": "html/css exercise",
   "private": true,
   "scripts": {
-    "start": "parcel src/index.html"
+    "start": "parcel src/index.html",
+    "deploy": "gh-pages -d dist",
+    "build": "parcel build src/index.html --public-url ./"
   },
   "author": "Marius Jagminas",
   "license": "ISC",
   "devDependencies": {
     "parcel": "^2.0.0-alpha.3.2",
     "sass": "^1.26.3"
+  },
+  "dependencies": {
+    "gh-pages": "^2.2.0"
   }
 }
