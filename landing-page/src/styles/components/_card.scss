@@ -16,7 +16,8 @@
   }
 }
 
-.card__header, .card__text {
+.card__header,
+.card__text {
   color: $color-text;
   margin: 0;
 }
@@ -42,34 +43,4 @@
   margin-top: em(40);
   border-radius: 5px;
   background-color: $color-main;
-}
-
-// **********************************************
-// Button
-// **********************************************
-
-.btn {
-  display: block;
-  text-transform: uppercase;
-  font-size: em(20);
-  font-weight: bold;
-  color: $color-text;
-  background: transparent;
-  border: 1px solid $color-text;
-  border-radius: em(20);
-  width: em(199);
-  padding: em(11) 0;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: $color-active;
-  }
-}
-
-// **************************************************
-// Text
-// **************************************************
-
-.text--dark {
-  color: $color-text-dark;
 }

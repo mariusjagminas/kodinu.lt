@@ -1,10 +1,10 @@
 @mixin container($width: 1080px, $padding: 0) {
   max-width: $width;
   margin: 0 auto;
-  padding: 0 $padding
+  padding: 0 $padding;
 }
 
-@mixin flex($justify-content: null, $align-items: null,$direction: null){
+@mixin flex($justify-content: null, $align-items: null, $direction: null) {
   display: flex;
   justify-content: $justify-content;
   align-items: $align-items;
@@ -12,18 +12,18 @@
 }
 
 @mixin tablet-up {
-  @media(min-width: 720px){
-    @content
+  @media (min-width: 720px) {
+    @content;
   }
-};
+}
 
 @mixin laptop-up {
-  @media(min-width: 1150px){
-    @content
+  @media (min-width: 1150px) {
+    @content;
   }
-}; 
+}
 
 //Functions
-@function em($px){
-  @return ($px/$font-size-base)+em;
+@function em($px) {
+  @return ($px/$font-size-base) + em;
 }

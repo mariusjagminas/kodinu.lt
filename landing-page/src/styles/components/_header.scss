@@ -1,41 +1,24 @@
-.background-container {
-  width: 100%;
-  background-color: $color-main;
-  
-  @include tablet-up {
-    background: url('../images/header-background.svg');
-    background-repeat: no-repeat;
-    height: em(670);
-    background-size: 2224px;
-    background-position: calc(50% - -240px) -20px;
-  }
-
-  @include laptop-up {
-    background-position: calc(50% - -150px) -20px;
-  }
-}
-
 .header {
   font-size: $font-size; // for header's elements resizing
   @include flex(flex-end, center);
   width: 100%;
   height: em(70);
-  @include container(1160px,20px);
+  @include container(1160px, 20px);
   background: $color-main;
   border-bottom: 1px solid $color-text;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
-  
+
   @include tablet-up {
     font-size: 11px; // for header's elements resizing
     height: em(155);
     background: transparent;
     border: none;
     position: static;
-  } 
-  
+  }
+
   @include laptop-up {
     font-size: $font-size; // for header's elements resizing
   }
@@ -46,26 +29,26 @@
 // ***************************************************
 
 .logo {
-  font-size: 20px; // for logo resizing 
-  font-family: 'Varela Round', sans-serif;
+  font-size: 20px; // for logo resizing
+  font-family: "Varela Round", sans-serif;
   font-weight: 500;
   letter-spacing: em(-0.7);
   line-height: 0.8;
   color: $color-text;
-  margin: 0 auto 0 0 ;
-  
+  margin: 0 auto 0 0;
+
   @include tablet-up {
     font-size: em(40); // for logo resizing
     transform: translateY(em(5));
   }
-  
+
   @include laptop-up {
     font-size: em(51); // for logo resizing
   }
 }
 
 .logo__subtitle {
-  font-size: em(8.8); 
+  font-size: em(8.8);
 }
 
 // *****************************************************
@@ -79,7 +62,7 @@
   color: $color-text;
 
   @include tablet-up {
-    display: none;   
+    display: none;
   }
 }
 
@@ -89,7 +72,7 @@
 
 .s-media {
   display: none;
-  
+
   @include tablet-up {
     @include flex(space-between);
     width: em(118);
@@ -97,7 +80,7 @@
   }
 }
 
-.s-media__link { 
+.s-media__link {
   font-size: em(21);
   color: $color-text;
   transition: color 0.2s ease;
@@ -139,11 +122,11 @@
 
 .navigation__list {
   height: 100%;
-  @include flex(space-evenly,center, column);
-  
+  @include flex(space-evenly, center, column);
+
   @include tablet-up {
     flex-direction: row;
-     justify-content: space-between;
+    justify-content: space-between;
   }
 }
 

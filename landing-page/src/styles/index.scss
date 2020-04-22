@@ -1,10 +1,16 @@
 @import "./variables";
-@import "./mixins";
 @import "./base";
+@import "./mixins";
 
-@import "./componets";
+// Components
+@import "./components/header";
+@import "./components/card";
+@import "./components/button";
 
-@import "./header";
-@import "./home";
-@import "./services";
-@import "./testimonials";
+// Sections
+@import "./home_section";
+@import "./services_section";
+@import "./testimonials_section";
+
+// Helpers
+@import "./helpers";

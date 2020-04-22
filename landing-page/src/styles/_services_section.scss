@@ -1,5 +1,5 @@
 .services {
-  @include container(1160px,20px);
+  @include container(1160px, 20px);
   padding-bottom: 60px;
 
   @include tablet-up {
@@ -13,12 +13,12 @@
 
 .services__card {
   margin-top: 60px;
-  
+
   @include tablet-up {
     margin-top: 0;
     font-size: 1.5vw; // For cards resizing
   }
-  
+
   @include laptop-up {
     font-size: $font-size; // For cards resizing
   }
@@ -26,7 +26,7 @@
 
 .services__card--top {
   @include tablet-up {
-     padding-top: 91px;
+    padding-top: 91px;
   }
 }
 
@@ -35,8 +35,8 @@
   margin-bottom: em(30);
 
   @include tablet-up {
-   margin-top: em(57);
-   width: em(376);
+    margin-top: em(57);
+    width: em(376);
   }
 }
 
@@ -50,12 +50,12 @@
   }
 }
 
-.services__image--documents {  
+.services__image--documents {
   width: 70%;
   margin-bottom: em(34);
-  
+
   @include tablet-up {
     margin-top: em(65);
     width: em(315);
-   }
+  }
 }

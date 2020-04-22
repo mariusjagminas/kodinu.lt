@@ -1,0 +1,40 @@
+.home_background {
+  width: 100%;
+  background-color: $color-main;
+
+  @include tablet-up {
+    background: url("../images/header-background.svg");
+    background-repeat: no-repeat;
+    height: em(670);
+    background-size: 2224px;
+    background-position: calc(50% - -240px) -20px;
+  }
+
+  @include laptop-up {
+    background-position: calc(50% - -150px) -20px;
+  }
+}
+
+.home {
+  @include flex(flex-start, center, column);
+  @include container(1160px, 20px);
+  padding-top: 120px;
+
+  @include tablet-up {
+    align-items: flex-start;
+    padding-top: 80px;
+  }
+}
+
+.home__btn-wrapper {
+  @include flex(space-between, center, column);
+  height: 130px;
+  margin-top: 63px;
+  margin-bottom: 60px;
+
+  @include tablet-up {
+    flex-direction: row;
+    height: 0;
+    width: 522px;
+  }
+}
