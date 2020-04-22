@@ -1,6 +1,5 @@
 .services {
   @include container(1160px, 20px);
-  padding-bottom: 60px;
 
   @include tablet-up {
     @include flex(space-between);
@@ -12,10 +11,12 @@
 }
 
 .services__card {
-  margin-top: 60px;
+  margin-top: -60px;
+  padding-top: 120px;
 
   @include tablet-up {
     margin-top: 0;
+    padding-top: 0;
     font-size: 1.5vw; // For cards resizing
   }
 
