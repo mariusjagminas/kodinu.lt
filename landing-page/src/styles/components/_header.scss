@@ -1,5 +1,5 @@
 .header {
-  font-size: $font-size; // for header's elements resizing
+  font-size: $font-size-base; // for header's elements resizing
   @include flex(flex-end, center);
   width: 100%;
   height: em(70);
@@ -20,7 +20,7 @@
   }
 
   @include laptop-up {
-    font-size: $font-size; // for header's elements resizing
+    font-size: $font-size-base; // for header's elements resizing
   }
 }
 

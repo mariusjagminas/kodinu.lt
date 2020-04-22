@@ -20,7 +20,7 @@
   }
 
   @include laptop-up {
-    font-size: $font-size; // For cards resizing
+    font-size: $font-size-base; // For cards resizing
   }
 }
 

@@ -25,5 +25,5 @@
 
 //Functions
 @function em($px) {
-  @return ($px/$font-size-base) + em;
+  @return ($px/$font-size-num) + em;
 }

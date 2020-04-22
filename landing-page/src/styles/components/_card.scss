@@ -4,7 +4,7 @@
   margin: 0;
 
   @include tablet-up {
-    font-size: $font-size; // for component resizing
+    font-size: $font-size-base; // for component resizing
   }
 }
 
