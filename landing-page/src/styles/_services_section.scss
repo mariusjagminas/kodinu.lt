@@ -3,6 +3,7 @@
 
   @include tablet-up {
     @include flex(space-between);
+    padding-bottom: 70px;
   }
 
   @include laptop-up {
