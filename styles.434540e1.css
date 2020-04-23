@@ -791,6 +791,11 @@ a {
   grid-row-start: 126;
   grid-row-end: 142;
 }
+@media (min-width: 1150px) {
+  .project__wall .project__card {
+    font-size: 0.7vw;
+  }
+}
 
 .project__headphones {
   grid-column-start: 34;
