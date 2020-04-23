@@ -23,6 +23,12 @@
   }
 }
 
+@mixin desktop-up {
+  @media (min-width: 1250px) {
+    @content;
+  }
+}
+
 //Functions
 @function em($px) {
   @return ($px/$font-size-num) + em;

@@ -12,6 +12,7 @@
   background-color: $color-main;
   position: relative;
   overflow: hidden;
+  padding-bottom: 10vw;
 
   @include tablet-up {
     height: 650px;

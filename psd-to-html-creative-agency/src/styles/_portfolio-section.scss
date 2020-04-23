@@ -1,0 +1,211 @@
+.portfolio {
+  @include container(1240px, 20px);
+  margin-top: -60px;
+  padding-top: 90px;
+  min-height: 900px;
+
+  @include tablet-up {
+    margin-top: 0;
+    padding-top: 60px;
+  }
+
+  @include laptop-up {
+    padding-top: 132px;
+  }
+}
+
+.portfolio__buttons {
+  display: none;
+
+  @include tablet-up {
+    @include flex(space-between);
+    margin-top: 78px;
+    width: 680px;
+  }
+
+  @include laptop-up {
+    width: 740px;
+  }
+}
+
+.projects-container {
+  @include tablet-up {
+    font-size: 1.24vw; // for sizing
+    width: em(1200);
+    height: em(1420);
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(120, 1fr);
+    grid-template-rows: repeat(142, 1fr);
+    margin: 0 auto;
+    padding-top: 4vw;
+  }
+
+  @include laptop-up {
+    font-size: 14.9px; // for sizing
+    padding: 0;
+    margin-top: 45px;
+  }
+
+  @include desktop-up {
+    font-size: 1rem; // for sizing
+  }
+}
+
+.project {
+  position: relative;
+  height: 75vw;
+  margin: 40px 0;
+
+  @include tablet-up {
+    height: auto;
+    width: auto;
+    margin: 0;
+  }
+}
+
+.project__link {
+  @include flex(flex-end, null, column);
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  opacity: 1;
+  overflow: hidden;
+
+  @include laptop-up {
+    justify-content: space-between;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      background: $color-project-overlay;
+      opacity: 1;
+    }
+  }
+}
+
+.project__icons {
+  @include flex(space-between);
+  font-size: 6vw;
+  color: $color-text;
+  width: em(40);
+  position: absolute;
+  right: em(10);
+  bottom: 20vw;
+
+  @include tablet-up {
+    font-size: 2vw;
+    bottom: 4.3vw;
+  }
+
+  @include laptop-up {
+    position: static;
+    font-size: 30px;
+    margin: 35px 0 0 35px;
+  }
+}
+
+.project__card {
+  align-self: flex-end;
+  background-color: $color-project-overlay;
+  padding: 1vw 4vw 4vw 4vw;
+
+  @include tablet-up {
+    font-size: 0.7vw;
+    max-width: initial;
+    width: 100%;
+    min-height: 8vw;
+    padding: 0.8vw;
+  }
+
+  @include laptop-up {
+    font-size: 1rem;
+    background-color: transparent;
+  }
+}
+
+.project__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project__candies {
+  grid-column-start: 1;
+  grid-column-end: 34;
+  grid-row-start: 1;
+  grid-row-end: 54;
+}
+
+.project__rope {
+  grid-column-start: 34;
+  grid-column-end: 78;
+  grid-row-start: 1;
+  grid-row-end: 33;
+}
+
+.project__doughnut {
+  grid-column-start: 78;
+  grid-column-end: 122;
+  grid-row-start: 1;
+  grid-row-end: 69;
+}
+
+.project__flower {
+  grid-column-start: 34;
+  grid-column-end: 78;
+  grid-row-start: 33;
+  grid-row-end: 69;
+}
+
+.project__bowl {
+  grid-column-start: 1;
+  grid-column-end: 34;
+  grid-row-start: 54;
+  grid-row-end: 90;
+}
+
+.project__shape {
+  grid-column-start: 34;
+  grid-column-end: 95;
+  grid-row-start: 69;
+  grid-row-end: 106;
+}
+
+.project__blueberries {
+  grid-column-start: 95;
+  grid-column-end: 122;
+  grid-row-start: 69;
+  grid-row-end: 106;
+}
+
+.project__jellyfish {
+  grid-column-start: 1;
+  grid-column-end: 34;
+  grid-row-start: 90;
+  grid-row-end: 126;
+}
+
+.project__wall {
+  grid-column-start: 1;
+  grid-column-end: 34;
+  grid-row-start: 126;
+  grid-row-end: 142;
+}
+
+.project__headphones {
+  grid-column-start: 34;
+  grid-column-end: 69;
+  grid-row-start: 106;
+  grid-row-end: 142;
+}
+
+.project__car {
+  grid-column-start: 69;
+  grid-column-end: 122;
+  grid-row-start: 106;
+  grid-row-end: 142;
+}
