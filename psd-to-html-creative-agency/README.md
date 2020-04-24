@@ -1,6 +1,6 @@
 # Creative Agency / PSD to HTML
 
-The website design [template](https://www.behance.net/gallery/69297573/Adobe-Xd-free-onepage-layout?tracking_source=search_projects_recommended%7Cadobe%20xd%20free%20web%20template) converted to HTML/CSS/JavaScript using mobile-first approach.
+The website design [template](https://www.behance.net/gallery/69297573/Adobe-Xd-free-onepage-layout?tracking_source=search_projects_recommended%7Cadobe%20xd%20free%20web%20template) converted to HTML/CSS/JavaScript using mobile-first approach and [BEM](https://9elements.com/bem-cheat-sheet/) style naming convention for CSS class names.
 
 [Live demo](https://mariusjagminas.github.io/kodinu.lt/)
 
