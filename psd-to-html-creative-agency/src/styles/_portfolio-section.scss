@@ -97,14 +97,14 @@
   bottom: 20vw;
 
   @include tablet-up {
-    font-size: 2vw;
-    bottom: 4.3vw;
+    font-size: em(25);
+    bottom: em(39);
   }
 
   @include laptop-up {
     position: static;
-    font-size: 30px;
-    margin: 35px 0 0 35px;
+    font-size: em(30);
+    margin: em(9) 0 0 em(7);
   }
 }
 
@@ -197,7 +197,7 @@
 
   @include laptop-up {
     .project__card {
-      font-size: 0.7vw;
+      font-size: em(9);
     }
   }
 }
