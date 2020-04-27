@@ -40,3 +40,18 @@
     color: $color-text-dark;
   }
 }
+
+.btn--round {
+  font-size: 1rem;
+  width: em(10);
+  height: em(10);
+  color: $color-active;
+  background-color: $color-text;
+  position: relative;
+
+  i {
+    position: absolute;
+    left: em(-3);
+    top: em(-3);
+  }
+}
