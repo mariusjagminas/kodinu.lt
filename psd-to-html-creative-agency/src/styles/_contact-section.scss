@@ -1,0 +1,66 @@
+.contact {
+  background-color: $color-main;
+}
+
+.contact__container {
+  @include container(1240px, 20px);
+  padding-top: em(80);
+  padding-bottom: 25vw;
+
+  @include tablet-up {
+    padding-top: em(60);
+    padding-bottom: em(60);
+  }
+}
+
+.contact__card {
+  padding-bottom: em(60);
+}
+
+.form {
+  font-size: 3.5vw; // for sizing
+  @include flex(flex-start, null, column);
+  width: 100%;
+  max-width: em(600);
+  position: relative;
+
+  @include tablet-up {
+    font-size: 10px;
+  }
+
+  @include laptop-up {
+    font-size: 1rem;
+  }
+}
+
+.form__input,
+.form__textarea {
+  font-size: inherit;
+  width: 100%;
+  border: none;
+  border-radius: em(10);
+  padding: em(32) em(32) em(24) em(32);
+  margin: em(20) 0;
+
+  &::placeholder {
+    font-size: em(20);
+    color: $color-active;
+  }
+}
+
+.form__textarea {
+  height: em(290);
+  resize: none;
+}
+
+.form__button {
+  font-size: em(90);
+  position: absolute;
+  right: em(10);
+  bottom: em(-13);
+
+  @include tablet-up {
+    right: em(-5);
+    bottom: em(17);
+  }
+}
