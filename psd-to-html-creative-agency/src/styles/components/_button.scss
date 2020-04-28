@@ -48,10 +48,20 @@
   color: $color-active;
   background-color: $color-text;
   position: relative;
+  transition: transform 0.3s ease, color 0.3s ease;
 
   i {
     position: absolute;
     left: em(-3);
     top: em(-3);
+  }
+
+  @include tablet-up {
+    &:hover,
+    &:focus {
+      outline: none;
+      transform: scale(1.06);
+      color: lighten($color-active, 7%);
+    }
   }
 }
