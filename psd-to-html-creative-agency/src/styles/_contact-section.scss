@@ -41,10 +41,16 @@
   border-radius: em(10);
   padding: em(32) em(32) em(24) em(32);
   margin: em(20) 0;
+  color: $color-active;
+  outline: none;
 
   &::placeholder {
     font-size: em(20);
     color: $color-active;
+  }
+
+  &:focus {
+    background-color: darken($color-light-grey, 3%);
   }
 }
 
