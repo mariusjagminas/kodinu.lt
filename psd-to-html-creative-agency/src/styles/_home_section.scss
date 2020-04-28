@@ -1,4 +1,10 @@
-.home_background {
+.home__background--outer {
+  @include desktop-up {
+    background: linear-gradient(to right, $color-main 50%, $color-active 50%);
+  }
+}
+
+.home__background--inner {
   width: 100%;
   background-color: $color-main;
 
@@ -7,11 +13,11 @@
     background-repeat: no-repeat;
     height: em(670);
     background-size: 2224px;
-    background-position: calc(50% - -240px) -20px;
+    background-position: calc(50% - -240px) -19px;
   }
 
   @include laptop-up {
-    background-position: calc(50% - -150px) -20px;
+    background-position: calc(50% - -150px) -19px;
   }
 }
 
