@@ -12,7 +12,7 @@
 
   @include laptop-up {
     padding-top: 132px;
-    padding-bottom: 180px;
+    padding-bottom: 173px;
   }
 }
 
@@ -34,7 +34,7 @@
   @include tablet-up {
     font-size: 1.24vw; // for sizing
     width: em(1200);
-    height: em(1420);
+    height: em(1430);
     display: grid;
     grid-gap: 5px;
     grid-template-columns: repeat(120, 1fr);
@@ -45,6 +45,7 @@
 
   @include laptop-up {
     font-size: 14.9px; // for sizing
+    grid-gap: 0;
     padding: 0;
     margin-top: 45px;
   }
