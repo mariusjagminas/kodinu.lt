@@ -43,25 +43,24 @@
 
 .btn--round {
   font-size: 1rem;
-  width: em(10);
-  height: em(10);
-  color: $color-active;
-  background-color: $color-text;
+  width: em(16);
+  height: em(16);
+  border: none;
+  border-radius: em(16);
+  background: $color-active;
+  background-image: url("../images/send-message-arrow.svg");
+  background-repeat: no-repeat;
+  background-size: em(6);
+  background-position: calc(50% - #{em(-1)});
   position: relative;
-  transition: transform 0.3s ease, color 0.3s ease;
-
-  i {
-    position: absolute;
-    left: em(-3);
-    top: em(-3);
-  }
+  transition: transform 0.3s ease, background-color 0.3s ease;
 
   @include tablet-up {
     &:hover,
     &:focus {
       outline: none;
       transform: scale(1.06);
-      color: lighten($color-active, 7%);
+      background-color: lighten($color-active, 7%);
     }
   }
 }

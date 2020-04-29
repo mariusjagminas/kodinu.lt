@@ -62,11 +62,11 @@
 .form__button {
   font-size: em(90);
   position: absolute;
-  right: em(10);
-  bottom: em(-13);
+  right: em(2);
+  bottom: em(-17);
 
   @include tablet-up {
-    right: em(-5);
-    bottom: em(17);
+    right: em(-8.2);
+    bottom: em(13.3);
   }
 }
