@@ -2,6 +2,8 @@
 @import "./base";
 @import "./mixins";
 
+@import "./ie-message";
+
 // Components
 @import "./components/header";
 @import "./components/card";
