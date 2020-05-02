@@ -1,0 +1,139 @@
+.portfolio {
+  @include container(1240px, 20px);
+  margin-top: -60px;
+  padding-top: 90px;
+  padding-bottom: 20px;
+
+  @include tablet-up {
+    margin-top: 0;
+    padding-top: 60px;
+    padding-bottom: 100px;
+  }
+
+  @include laptop-up {
+    padding-top: 132px;
+    padding-bottom: 173px;
+  }
+}
+
+.portfolio__buttons {
+  display: none;
+
+  @include tablet-up {
+    @include flex(space-between);
+    margin-top: 78px;
+    width: 680px;
+  }
+
+  @include laptop-up {
+    width: 740px;
+  }
+}
+
+.projects-container {
+  @include tablet-up {
+    font-size: 1.24vw; // for sizing
+    width: em(1200);
+    height: em(1430);
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(120, 1fr);
+    grid-template-rows: repeat(142, 1fr);
+    margin: 0 auto;
+    padding-top: 4vw;
+  }
+
+  @include laptop-up {
+    font-size: 14.9px; // for sizing
+    grid-gap: 0;
+    padding: 0;
+    margin-top: 45px;
+  }
+
+  @include desktop-up {
+    font-size: 1rem; // for sizing
+  }
+}
+
+.project--candies {
+  grid-column-start: 1;
+  grid-column-end: 34;
+  grid-row-start: 1;
+  grid-row-end: 54;
+}
+
+.project--rope {
+  grid-column-start: 34;
+  grid-column-end: 78;
+  grid-row-start: 1;
+  grid-row-end: 33;
+}
+
+.project--doughnut {
+  grid-column-start: 78;
+  grid-column-end: 122;
+  grid-row-start: 1;
+  grid-row-end: 69;
+}
+
+.project--flower {
+  grid-column-start: 34;
+  grid-column-end: 78;
+  grid-row-start: 33;
+  grid-row-end: 69;
+}
+
+.project--bowl {
+  grid-column-start: 1;
+  grid-column-end: 34;
+  grid-row-start: 54;
+  grid-row-end: 90;
+}
+
+.project--shape {
+  grid-column-start: 34;
+  grid-column-end: 95;
+  grid-row-start: 69;
+  grid-row-end: 106;
+}
+
+.project--blueberries {
+  grid-column-start: 95;
+  grid-column-end: 122;
+  grid-row-start: 69;
+  grid-row-end: 106;
+}
+
+.project--jellyfish {
+  grid-column-start: 1;
+  grid-column-end: 34;
+  grid-row-start: 90;
+  grid-row-end: 126;
+}
+
+.project--wall {
+  grid-column-start: 1;
+  grid-column-end: 34;
+  grid-row-start: 126;
+  grid-row-end: 142;
+
+  @include laptop-up {
+    .project__card {
+      font-size: em(9);
+    }
+  }
+}
+
+.project--headphones {
+  grid-column-start: 34;
+  grid-column-end: 69;
+  grid-row-start: 106;
+  grid-row-end: 142;
+}
+
+.project--car {
+  grid-column-start: 69;
+  grid-column-end: 122;
+  grid-row-start: 106;
+  grid-row-end: 142;
+}

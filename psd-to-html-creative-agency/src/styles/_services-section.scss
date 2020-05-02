@@ -1,0 +1,63 @@
+.services {
+  @include container(1160px, 20px);
+
+  @include tablet-up {
+    @include flex(space-between);
+    padding-bottom: 70px;
+  }
+
+  @include laptop-up {
+    padding-bottom: 169px;
+  }
+}
+
+.services__card {
+  margin-top: -60px;
+  padding-top: 120px;
+
+  @include tablet-up {
+    margin-top: 0;
+    padding-top: 0;
+    font-size: 1.5vw; // For cards resizing
+  }
+
+  @include laptop-up {
+    font-size: $font-size-base; // For cards resizing
+  }
+}
+
+.services__card--top {
+  @include tablet-up {
+    padding-top: 91px;
+  }
+}
+
+.services__image--paint-roller {
+  width: 70%;
+  margin-bottom: em(30);
+
+  @include tablet-up {
+    margin-top: em(57);
+    width: em(376);
+  }
+}
+
+.services__image--laptop {
+  width: 70%;
+  margin-bottom: em(56);
+
+  @include tablet-up {
+    margin-top: em(149);
+    width: em(355);
+  }
+}
+
+.services__image--documents {
+  width: 70%;
+  margin-bottom: em(34);
+
+  @include tablet-up {
+    margin-top: em(65);
+    width: em(315);
+  }
+}

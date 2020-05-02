@@ -1,0 +1,80 @@
+.project {
+  position: relative;
+  height: 75vw;
+  margin: 40px 0;
+
+  @include tablet-up {
+    height: auto;
+    width: auto;
+    margin: 0;
+  }
+}
+
+.project__link {
+  @include flex(flex-end, null, column);
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  opacity: 1;
+  overflow: hidden;
+
+  @include laptop-up {
+    justify-content: space-between;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      background: $color-project-overlay;
+      opacity: 1;
+    }
+  }
+}
+
+.project__icons {
+  @include flex(space-between);
+  font-size: 6vw;
+  color: $color-text;
+  width: em(40);
+  position: absolute;
+  right: em(10);
+  bottom: 20vw;
+
+  @include tablet-up {
+    font-size: em(25);
+    bottom: em(39);
+  }
+
+  @include laptop-up {
+    position: static;
+    font-size: em(30);
+    margin: em(9) 0 0 em(7);
+  }
+}
+
+.project__card {
+  align-self: flex-end;
+  background-color: $color-project-overlay;
+  padding: 1vw 4vw 4vw 4vw;
+
+  @include tablet-up {
+    font-size: 0.7vw;
+    max-width: initial;
+    width: 100%;
+    min-height: 8vw;
+    padding: 0.8vw;
+  }
+
+  @include laptop-up {
+    font-size: 1rem;
+    background-color: transparent;
+  }
+}
+
+.project__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

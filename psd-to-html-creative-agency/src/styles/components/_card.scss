@@ -1,0 +1,50 @@
+.card {
+  font-size: 3vw; // for component resizing
+  max-width: em(510);
+  margin: 0;
+  color: $color-text;
+
+  @include tablet-up {
+    font-size: $font-size-base; // for component resizing
+  }
+}
+
+.card__header,
+.card__text {
+  margin: 0;
+}
+
+.card__header {
+  font-size: em(55);
+  letter-spacing: em(-0.6);
+  padding-bottom: em(3);
+}
+
+.card__text {
+  font-size: em(20);
+}
+
+.card__decoration {
+  width: 45%;
+  height: 9px;
+  margin-top: em(40);
+  border-radius: 5px;
+  background-color: $color-main;
+}
+
+.card--right-alignment {
+  text-align: right;
+
+  .card__decoration {
+    transform: translateX(124%);
+  }
+}
+
+.card__header--h3 {
+  font-size: em(30);
+  padding-bottom: em(9);
+}
+
+.card--text-dark {
+  color: $color-text-dark;
+}
