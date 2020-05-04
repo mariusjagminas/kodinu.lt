@@ -1,11 +1,46 @@
 import '../styles/main.scss';
 
 const cardsBoard = document.querySelector('.cards-board');
-const resetBtn = document.querySelector('.btn');
-resetBtn.addEventListener('click', initGame);
+const btns = document.querySelectorAll('.btn');
+btns.forEach((btn) => btn.addEventListener('click', handleBtnClick));
 
 let cards = [];
 let cardsPair = [];
+let level = {
+  number: 8,
+  styles: 'grid-template-columns: auto auto auto auto; grid-gap: 30px;',
+};
+
+function handleBtnClick() {
+  switch (this.dataset.btn) {
+    case 'reset':
+      initGame();
+      break;
+    case 'easy':
+      level = {
+        number: 8,
+        styles: 'grid-template-columns: auto auto auto auto; grid-gap: 30px;',
+      };
+      initGame();
+      break;
+    case 'medium':
+      level = {
+        number: 18,
+        styles:
+          'grid-template-columns: auto auto auto auto auto auto; grid-gap: 10px;',
+      };
+      initGame();
+      break;
+    case 'pro':
+      level = {
+        number: 32,
+        styles:
+          'grid-template-columns: auto auto auto auto auto auto auto auto; grid-gap: 10px;',
+      };
+      initGame();
+      break;
+  }
+}
 
 function createCardsNumbers(length) {
   const array = [...Array(length)];
@@ -97,7 +132,8 @@ function handleClick() {
 function initGame() {
   cards = [];
   cardsPair = [];
-  const cardsNumbers = createCardsNumbers(3);
+  cardsBoard.style.cssText = level.styles;
+  const cardsNumbers = createCardsNumbers(level.number);
   const shuffledNumbers = shuffleNumbers(cardsNumbers);
   addCardsToBoard(shuffledNumbers);
 }
