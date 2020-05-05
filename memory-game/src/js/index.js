@@ -1,8 +1,11 @@
 import '../styles/main.scss';
 
 const cardsBoard = document.querySelector('.cards-board');
-const btns = document.querySelectorAll('.btn');
-btns.forEach((btn) => btn.addEventListener('click', handleBtnClick));
+const btn = document.querySelector('.btn');
+const select = document.querySelector('#level');
+
+btn.addEventListener('click', resetGame);
+select.addEventListener('change', changeLevel);
 
 let cards = [];
 let cardsPair = [];
@@ -11,11 +14,12 @@ let level = {
   styles: 'grid-template-columns: auto auto auto auto; grid-gap: 30px;',
 };
 
-function handleBtnClick() {
-  switch (this.dataset.btn) {
-    case 'reset':
-      initGame();
-      break;
+function resetGame() {
+  initGame();
+}
+
+function changeLevel(e) {
+  switch (e.target.value) {
     case 'easy':
       level = {
         number: 8,
