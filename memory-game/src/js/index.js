@@ -3,6 +3,7 @@ import '../styles/main.scss';
 const cardsBoard = document.querySelector('.cards-board');
 const btn = document.querySelector('.btn');
 const select = document.querySelector('#level');
+const time = document.querySelector('.time');
 
 btn.addEventListener('click', resetGame);
 select.addEventListener('change', changeLevel);
@@ -13,6 +14,7 @@ let level = {
   number: 8,
   styles: 'grid-template-columns: auto auto auto auto; grid-gap: 30px;',
 };
+let timer = null;
 
 function resetGame() {
   initGame();
@@ -107,7 +109,33 @@ function isAllDisabled() {
   return result.length === 0;
 }
 
+function startTimer() {
+  if (timer) return;
+
+  const startTime = new Date().getTime();
+  timer = setInterval(countTime, 1000);
+
+  function countTime() {
+    const timeNow = new Date().getTime();
+    const timeElapsed = (timeNow - startTime) / 1000;
+
+    const seconds = parseInt(timeElapsed % 60);
+    const minutes = parseInt(timeElapsed / 60) % 60;
+    const hours = parseInt(timeElapsed / 3600);
+
+    time.innerText = `${hours > 0 ? hours + ':' : ''}${
+      minutes > 9 ? '' : 0
+    }${minutes}:${seconds > 9 ? '' : 0}${seconds}`;
+  }
+}
+
+function stopTimer() {
+  clearInterval(timer);
+  timer = null;
+}
+
 function handleClick() {
+  startTimer();
   if (isCardDisabled(this)) return;
   this.classList.toggle('card--open');
 
@@ -128,7 +156,7 @@ function handleClick() {
     disableIfMatches(cardsPair);
 
     if (isAllDisabled()) {
-      console.log('game Over');
+      stopTimer();
     }
   }
 }
@@ -137,6 +165,8 @@ function initGame() {
   cards = [];
   cardsPair = [];
   cardsBoard.style.cssText = level.styles;
+  stopTimer();
+  time.innerText = '00:00';
   const cardsNumbers = createCardsNumbers(level.number);
   const shuffledNumbers = shuffleNumbers(cardsNumbers);
   addCardsToBoard(shuffledNumbers);
