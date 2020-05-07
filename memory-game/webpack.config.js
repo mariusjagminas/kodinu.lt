@@ -14,7 +14,7 @@ module.exports = {
       filename: 'styles.css',
     }),
     new HtmlWebpackPlugin({
-      template: 'src/templates/index.html',
+      template: 'src/index.html',
       filename: 'index.html',
       scriptLoading: 'defer',
       minify: true,
