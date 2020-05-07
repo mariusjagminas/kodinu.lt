@@ -3,7 +3,7 @@ import '../styles/main.scss';
 const cardsBoard = document.querySelector('.cards-board');
 const btn = document.querySelector('.btn');
 const select = document.querySelector('#level');
-const time = document.querySelector('.time');
+const time = document.querySelector('.game__time');
 
 btn.addEventListener('click', resetGame);
 select.addEventListener('change', changeLevel);
@@ -12,7 +12,7 @@ let cards = [];
 let cardsPair = [];
 let level = {
   number: 8,
-  styles: 'grid-template-columns: auto auto auto auto; grid-gap: 30px;',
+  styles: 'grid-template-columns: auto auto auto auto;',
 };
 let timer = null;
 
@@ -25,15 +25,14 @@ function changeLevel(e) {
     case 'easy':
       level = {
         number: 8,
-        styles: 'grid-template-columns: auto auto auto auto; grid-gap: 30px;',
+        styles: 'grid-template-columns: auto auto auto auto;',
       };
       initGame();
       break;
     case 'medium':
       level = {
         number: 18,
-        styles:
-          'grid-template-columns: auto auto auto auto auto auto; grid-gap: 10px;',
+        styles: 'grid-template-columns: auto auto auto auto auto auto;',
       };
       initGame();
       break;
@@ -41,7 +40,7 @@ function changeLevel(e) {
       level = {
         number: 32,
         styles:
-          'grid-template-columns: auto auto auto auto auto auto auto auto; grid-gap: 10px;',
+          'grid-template-columns: auto auto auto auto auto auto auto auto;',
       };
       initGame();
       break;
@@ -69,7 +68,12 @@ function createCard(number) {
   div.classList.add('card');
   div.setAttribute('data-card', number);
   div.addEventListener('click', handleClick);
-  div.innerText = number;
+  div.innerHTML = `
+  <div class="card__frontface"></div>
+  <div class="card__backface">
+    <span class="card__number">${number}</span>
+  </div>
+`;
   return div;
 }
 
@@ -94,7 +98,7 @@ function isCardDisabled(card) {
   return card.classList.contains('card--inactive');
 }
 
-function disableIfMatches(cardsPair) {
+function disableIfMatches() {
   if (cardsPair[0].dataset.card === cardsPair[1].dataset.card) {
     cardsPair[0].classList.add('card--inactive');
     cardsPair[1].classList.add('card--inactive');
@@ -153,7 +157,7 @@ function handleClick() {
   }
 
   if (cardsPair.length > 1) {
-    disableIfMatches(cardsPair);
+    disableIfMatches();
 
     if (isAllDisabled()) {
       stopTimer();

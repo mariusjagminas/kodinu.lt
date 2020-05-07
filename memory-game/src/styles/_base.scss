@@ -3,6 +3,7 @@
 
 html {
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
   font-size: $font-size-base;
 }
 
@@ -34,4 +35,10 @@ ul {
 img {
   max-width: 100%;
   height: auto;
+}
+
+body {
+  background: url('../assets/background.svg');
+  background-size: 100px;
+  background-color: $color-background;
 }

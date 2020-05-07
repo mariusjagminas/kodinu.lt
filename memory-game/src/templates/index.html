@@ -3,21 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <title>Memory Game</title>
   </head>
   <body>
     <div class="game">
       <h1 class="game__title">Memory Game</h1>
-      <p class="game__subtitle">Try to find matching cards</p>
-      <p class="time">00:00</p>
+      <p class="game__time">00:00</p>
       <div class="cards-board cards-board--easy"></div>
-      <button class="btn" data-btn="reset">Reset Game</button>
-      <label for="level">Select Level</label>
-      <select name="level" id="level">
-        <option value="easy">Easy</option>
-        <option value="medium">Medium</option>
-        <option value="pro">Pro</option>
-      </select>
+      <div class="controls">
+        <button class="btn" data-btn="reset">New Game</button>
+        <select name="level" id="level" class="level">
+          <option class="level__option" selected>Select Level</option>
+          <option class="level__option" value="easy">Easy</option>
+          <option class="level__option" class="level__option" value="medium"
+            >Medium</option
+          >
+          <option class="level__option" value="pro">Pro</option>
+        </select>
+      </div>
     </div>
   </body>
 </html>
