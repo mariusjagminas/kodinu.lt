@@ -1,13 +1,52 @@
 .card {
-  background-color: blue;
-  color: white;
-  font-size: 45px;
+  position: relative;
+  font-size: 7.5vw;
+
+  @include tablet-up {
+    font-size: 40px;
+  }
+}
+
+.card__frontface,
+.card__backface {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  backface-visibility: hidden;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition-duration: 0.5s;
+  transition-property: transform;
+}
+
+.card__frontface {
+  background: url('../assets/card-background.svg'), $color-secondary;
+  background-size: 15px;
+  transform: rotateY(0deg);
+  border: 2px solid darken($color-light, 30%);
+  border-radius: 5px;
+}
+
+.card__backface {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $color-light;
+  background-color: $color-main;
+  border-radius: 5px;
+  transform: rotateY(180deg);
 }
 
 .card--open {
-  background-color: red;
+  .card__frontface {
+    transform: rotateY(180deg);
+  }
+  .card__backface {
+    transform: rotateY(0deg);
+  }
 }
 
 .card--inactive {
-  opacity: 0.1;
+  transform: scale(0.9);
 }
