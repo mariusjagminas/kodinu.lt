@@ -1,6 +1,8 @@
 .card {
   position: relative;
   font-size: 7.5vw;
+  opacity: 1;
+  transition: opacity 0.3s ease;
 
   @include tablet-up {
     font-size: 40px;
@@ -49,4 +51,8 @@
 
 .card--inactive {
   transform: scale(0.9);
+}
+
+.card--hidden {
+  opacity: 0;
 }

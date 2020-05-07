@@ -15,6 +15,65 @@ let level = {
   styles: 'grid-template-columns: auto auto auto auto;',
 };
 let timer = null;
+const gameOverMessage = [
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  'Y',
+  'E',
+  'A',
+  'H',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+
+  'Y',
+  'O',
+  'U',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  'D',
+  'I',
+  'D',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  'I',
+  'T',
+  '!',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+];
 
 function resetGame() {
   initGame();
@@ -63,27 +122,28 @@ function shuffleNumbers(numbers) {
   return numbers.sort(() => Math.random() - 0.5);
 }
 
-function createCard(number) {
-  const div = document.createElement('div');
-  div.classList.add('card');
-  div.setAttribute('data-card', number);
-  div.addEventListener('click', handleClick);
-  div.innerHTML = `
-  <div class="card__frontface"></div>
-  <div class="card__backface">
-    <span class="card__number">${number}</span>
-  </div>
-`;
-  return div;
+function createCards(itemsArr, classNames) {
+  let cardsNodesArr = [];
+
+  itemsArr.forEach((item) => {
+    const div = document.createElement('div');
+    div.classList.add(...classNames);
+    div.setAttribute('data-card', item);
+    div.addEventListener('click', handleClick);
+    div.innerHTML = `
+    <div class="card__frontface"></div>
+    <div class="card__backface">
+      <span class="card__number">${item}</span>
+    </div>
+  `;
+    cardsNodesArr.push(div);
+  });
+  return cardsNodesArr;
 }
 
-function addCardsToBoard(cardsNumbers) {
-  cardsBoard.innerHTML = '';
-  cardsNumbers.forEach((cardNumber) => {
-    const card = createCard(cardNumber);
-    cardsBoard.appendChild(card);
-    cards.push(card);
-  });
+function addCardsToBoard(cards) {
+  cards.forEach((card) => cardsBoard.appendChild(card));
+  cards = cards;
 }
 
 function closeCard(card) {
@@ -138,6 +198,17 @@ function stopTimer() {
   timer = null;
 }
 
+function animate(cards, className, shouldAddClass, delay) {
+  const adjustedDelay = delay / (cards.length * 3);
+  const method = shouldAddClass ? 'add' : 'remove';
+
+  cards.forEach((card, i) => {
+    setTimeout(() => {
+      card.classList[method](className);
+    }, i * adjustedDelay);
+  });
+}
+
 function handleClick() {
   startTimer();
   if (isCardDisabled(this)) return;
@@ -160,20 +231,36 @@ function handleClick() {
     disableIfMatches();
 
     if (isAllDisabled()) {
-      stopTimer();
+      setTimeout(endGame, 500);
     }
   }
 }
 
+function endGame() {
+  cardsBoard.innerHTML = '';
+  cardsBoard.style.cssText =
+    'grid-template-columns: auto auto auto auto auto auto auto auto;';
+  cards = createCards(gameOverMessage, ['card']);
+  animate(cards, 'card--open', true, 5000);
+  addCardsToBoard(cards);
+  stopTimer();
+}
+
 function initGame() {
-  cards = [];
+  cardsBoard.innerHTML = '';
   cardsPair = [];
+  cards = [];
   cardsBoard.style.cssText = level.styles;
   stopTimer();
   time.innerText = '00:00';
   const cardsNumbers = createCardsNumbers(level.number);
   const shuffledNumbers = shuffleNumbers(cardsNumbers);
-  addCardsToBoard(shuffledNumbers);
+  cards = createCards(shuffledNumbers, ['card', 'card--hidden', 'card--open']);
+  addCardsToBoard(cards);
+  animate(cards, 'card--hidden', false, 800);
+  setTimeout(() => {
+    animate(cards, 'card--open', false, 2000);
+  }, 1200);
 }
 
 initGame();
