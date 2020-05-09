@@ -1,20 +1,20 @@
 import '../styles/main.scss';
 
-const cardsBoard = document.querySelector('.cards-board');
-const btn = document.querySelector('.btn');
-const select = document.querySelector('#level');
-const time = document.querySelector('.game__time');
+const cardsContainerElem = document.querySelector('.cards-board');
+const resetButtonElem = document.querySelector('.btn');
+const optionsElem = document.querySelector('#level');
+const timeElem = document.querySelector('.game__time');
 
-btn.addEventListener('click', resetGame);
-select.addEventListener('change', changeLevel);
+resetButtonElem.addEventListener('click', resetGame);
+optionsElem.addEventListener('change', changeLevel);
 
 let cards = [];
 let cardsPair = [];
 let level = {
-  number: 8,
-  styles: 'grid-template-columns: auto auto auto auto;',
+  numberOfCards: 16,
+  numberOfColumns: 'grid-template-columns: repeat(4,1fr);',
 };
-let timer = null;
+let timerOn = null;
 const gameOverMessage = [
   '',
   '',
@@ -83,67 +83,73 @@ function changeLevel(e) {
   switch (e.target.value) {
     case 'easy':
       level = {
-        number: 8,
-        styles: 'grid-template-columns: auto auto auto auto;',
+        numberOfCards: 16,
+        numberOfColumns: 'grid-template-columns: repeat(4, 1fr);',
       };
       initGame();
       break;
     case 'medium':
       level = {
-        number: 18,
-        styles: 'grid-template-columns: auto auto auto auto auto auto;',
+        numberOfCards: 36,
+        numberOfColumns: 'grid-template-columns: repeat(6, 1fr);',
       };
       initGame();
       break;
     case 'pro':
       level = {
-        number: 32,
-        styles:
-          'grid-template-columns: auto auto auto auto auto auto auto auto;',
+        numberOfCards: 64,
+        numberOfColumns: 'grid-template-columns: repeat(8, 1fr);',
       };
       initGame();
       break;
   }
 }
 
-function createCardsNumbers(length) {
-  const array = [...Array(length)];
+function generateRandomNumbers(numberOfCards) {
+  const arr = [...Array(numberOfCards / 2)];
   let numbersArray = [];
 
-  array.forEach((_, i) => {
+  arr.forEach((_, i) => {
     numbersArray.push(i);
     numbersArray.push(i);
   });
+  const shuffledNumbers = shuffleNumbers(numbersArray);
 
-  return numbersArray;
+  return shuffledNumbers;
 }
 
 function shuffleNumbers(numbers) {
   return numbers.sort(() => Math.random() - 0.5);
 }
 
-function createCards(itemsArr, classNames) {
+function createCards(itemsArr, classNames, eventHandler = null) {
   let cardsNodesArr = [];
 
   itemsArr.forEach((item) => {
     const div = document.createElement('div');
     div.classList.add(...classNames);
     div.setAttribute('data-card', item);
-    div.addEventListener('click', handleClick);
+
+    if (eventHandler) {
+      div.addEventListener('click', eventHandler);
+    }
+
     div.innerHTML = `
     <div class="card__frontface"></div>
     <div class="card__backface">
       <span class="card__number">${item}</span>
     </div>
   `;
+
     cardsNodesArr.push(div);
   });
+  appendCards(cardsNodesArr);
+
   return cardsNodesArr;
 }
 
-function addCardsToBoard(cards) {
-  cards.forEach((card) => cardsBoard.appendChild(card));
-  cards = cards;
+function appendCards(cards) {
+  cards.forEach((card) => cardsContainerElem.appendChild(card));
 }
 
 function closeCard(card) {
@@ -162,22 +168,24 @@ function disableIfMatches() {
   if (cardsPair[0].dataset.card === cardsPair[1].dataset.card) {
     cardsPair[0].classList.add('card--inactive');
     cardsPair[1].classList.add('card--inactive');
+
     cardsPair = [];
   }
 }
 
-function isAllDisabled() {
+function AllDisabled() {
   const result = cards.filter(
     (card) => !card.classList.contains('card--inactive')
   );
+
   return result.length === 0;
 }
 
 function startTimer() {
-  if (timer) return;
+  if (timerOn) return;
 
   const startTime = new Date().getTime();
-  timer = setInterval(countTime, 1000);
+  timerOn = setInterval(countTime, 1000);
 
   function countTime() {
     const timeNow = new Date().getTime();
@@ -187,18 +195,18 @@ function startTimer() {
     const minutes = parseInt(timeElapsed / 60) % 60;
     const hours = parseInt(timeElapsed / 3600);
 
-    time.innerText = `${hours > 0 ? hours + ':' : ''}${
+    timeElem.innerText = `${hours > 0 ? hours + ':' : ''}${
       minutes > 9 ? '' : 0
     }${minutes}:${seconds > 9 ? '' : 0}${seconds}`;
   }
 }
 
 function stopTimer() {
-  clearInterval(timer);
-  timer = null;
+  clearInterval(timerOn);
+  timerOn = null;
 }
 
-function animate(cards, className, shouldAddClass, delay) {
+function animateCards(cards, className, shouldAddClass, delay) {
   const adjustedDelay = delay / (cards.length * 3);
   const method = shouldAddClass ? 'add' : 'remove';
 
@@ -211,56 +219,60 @@ function animate(cards, className, shouldAddClass, delay) {
 
 function handleClick() {
   startTimer();
+
   if (isCardDisabled(this)) return;
+
   this.classList.toggle('card--open');
 
   if (cardsPair.length > 1) {
     cardsPair.forEach((card) => closeCard(card));
     cardsPair = [];
   }
-
   if (!isOpen(this)) {
     cardsPair = [];
   }
-
   if (isOpen(this)) {
     cardsPair.push(this);
   }
-
   if (cardsPair.length > 1) {
     disableIfMatches();
 
-    if (isAllDisabled()) {
-      setTimeout(endGame, 500);
+    if (AllDisabled()) {
+      setTimeout(endGame, 300);
     }
   }
 }
 
 function endGame() {
-  cardsBoard.innerHTML = '';
-  cardsBoard.style.cssText =
-    'grid-template-columns: auto auto auto auto auto auto auto auto;';
-  cards = createCards(gameOverMessage, ['card']);
-  animate(cards, 'card--open', true, 5000);
-  addCardsToBoard(cards);
+  cardsContainerElem.innerHTML = '';
+  cardsContainerElem.style.cssText = 'grid-template-columns: repeat(8, 1fr);';
+
   stopTimer();
+
+  cards = createCards(gameOverMessage, ['card'], false);
+  animateCards(cards, 'card--open', true, 5000);
 }
 
 function initGame() {
-  cardsBoard.innerHTML = '';
+  cardsContainerElem.innerHTML = '';
   cardsPair = [];
   cards = [];
-  cardsBoard.style.cssText = level.styles;
+  cardsContainerElem.style.cssText = level.numberOfColumns;
+
   stopTimer();
-  time.innerText = '00:00';
-  const cardsNumbers = createCardsNumbers(level.number);
-  const shuffledNumbers = shuffleNumbers(cardsNumbers);
-  cards = createCards(shuffledNumbers, ['card', 'card--hidden', 'card--open']);
-  addCardsToBoard(cards);
-  animate(cards, 'card--hidden', false, 800);
+  timeElem.innerText = '00:00';
+
+  const randomNumbers = generateRandomNumbers(level.numberOfCards);
+  cards = createCards(
+    randomNumbers,
+    ['card', 'card--hidden', 'card--open'],
+    handleClick
+  );
+
+  animateCards(cards, 'card--hidden', false, 800);
   setTimeout(() => {
-    animate(cards, 'card--open', false, 2000);
-  }, 1200);
+    animateCards(cards, 'card--open', false, 2000);
+  }, 1000);
 }
 
 initGame();
