@@ -1,7 +1,11 @@
 import { cardsContainerElem } from './domElements';
 
+function appendCards(cards) {
+  cards.forEach((card) => cardsContainerElem.appendChild(card));
+}
+
 function createCards(itemsArr, classNames, eventHandler = null) {
-  let cardsNodesArr = [];
+  const cardsNodesArr = [];
 
   itemsArr.forEach((item) => {
     const div = document.createElement('div');
@@ -24,10 +28,6 @@ function createCards(itemsArr, classNames, eventHandler = null) {
   appendCards(cardsNodesArr);
 
   return cardsNodesArr;
-}
-
-function appendCards(cards) {
-  cards.forEach((card) => cardsContainerElem.appendChild(card));
 }
 
 export default createCards;
