@@ -24,6 +24,7 @@ function changeLevel(e) {
       };
       initGame();
       break;
+    default:
   }
 }
 
