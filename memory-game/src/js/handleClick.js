@@ -23,7 +23,7 @@ function disableIfMatches() {
   }
 }
 
-function AllDisabled() {
+function allDisabled() {
   const result = global.cards.filter(
     (card) => !card.classList.contains('card--inactive')
   );
@@ -51,7 +51,7 @@ function handleClick() {
   if (global.cardsPair.length > 1) {
     disableIfMatches();
 
-    if (AllDisabled()) {
+    if (allDisabled()) {
       setTimeout(endGame, 300);
     }
   }
