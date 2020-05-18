@@ -6,9 +6,12 @@ function appendCards(cards) {
 
 function createCards(itemsArr, classNames, eventHandler = null) {
   const cardsNodesArr = [];
+  const cardTemplate = document.querySelector('#card-template');
 
   itemsArr.forEach((item) => {
-    const div = document.createElement('div');
+    const tmpl = cardTemplate.content.cloneNode(true);
+    const div = tmpl.children[0];
+
     div.classList.add(...classNames);
     div.setAttribute('data-card', item);
 
@@ -16,12 +19,7 @@ function createCards(itemsArr, classNames, eventHandler = null) {
       div.addEventListener('click', eventHandler);
     }
 
-    div.innerHTML = `
-    <div class="card__frontface"></div>
-    <div class="card__backface">
-      <span class="card__number">${item}</span>
-    </div>
-  `;
+    div.children[1].children[0].innerText = item;
 
     cardsNodesArr.push(div);
   });
