@@ -1,5 +1,6 @@
 import { startTimer } from './timer';
-import global from './globalVariables';
+import store from './store/store';
+import { FLUSH_CARDS_PAIR, PUSH_CARD_TO_CARDS_PAIR } from './store/actions';
 import endGame from './endGame';
 
 function closeCard(card) {
@@ -15,16 +16,18 @@ function isCardDisabled(card) {
 }
 
 function disableIfMatches() {
-  if (global.cardsPair[0].dataset.card === global.cardsPair[1].dataset.card) {
-    global.cardsPair[0].classList.add('card--inactive');
-    global.cardsPair[1].classList.add('card--inactive');
+  const { cardsPair } = store.getState();
+  if (cardsPair[0].dataset.card === cardsPair[1].dataset.card) {
+    cardsPair[0].classList.add('card--inactive');
+    cardsPair[1].classList.add('card--inactive');
 
-    global.cardsPair = [];
+    store.dispatch({ type: FLUSH_CARDS_PAIR });
   }
 }
 
 function allDisabled() {
-  const result = global.cards.filter(
+  const { cards } = store.getState();
+  const result = cards.filter(
     (card) => !card.classList.contains('card--inactive')
   );
 
@@ -38,17 +41,24 @@ function handleClick() {
 
   this.classList.toggle('card--open');
 
-  if (global.cardsPair.length > 1) {
-    global.cardsPair.forEach((card) => closeCard(card));
-    global.cardsPair = [];
+  const { cardsPair } = store.getState();
+
+  if (cardsPair.length > 1) {
+    cardsPair.forEach((card) => closeCard(card));
+    store.dispatch({ type: FLUSH_CARDS_PAIR });
   }
+
   if (!isOpen(this)) {
-    global.cardsPair = [];
+    store.dispatch({ type: FLUSH_CARDS_PAIR });
   }
+
   if (isOpen(this)) {
-    global.cardsPair.push(this);
+    store.dispatch({ type: PUSH_CARD_TO_CARDS_PAIR, card: this });
   }
-  if (global.cardsPair.length > 1) {
+
+  const { cardsPair: cardsPair2 } = store.getState();
+
+  if (cardsPair2.length > 1) {
     disableIfMatches();
 
     if (allDisabled()) {

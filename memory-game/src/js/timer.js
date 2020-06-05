@@ -1,8 +1,9 @@
-import global from './globalVariables';
 import { timeElem } from './domElements';
+import { CLEAR_TIMER, SET_TIMER } from './store/actions';
+import store from './store/store';
 
 function startTimer() {
-  if (global.timerOn) return;
+  if (store.getState().timerOn) return;
   const startTime = new Date().getTime();
 
   function countTime() {
@@ -17,13 +18,16 @@ function startTimer() {
       minutes > 9 ? '' : 0
     }${minutes}:${seconds > 9 ? '' : 0}${seconds}`;
   }
-
-  global.timerOn = setInterval(countTime, 1000);
+  store.dispatch({ type: SET_TIMER, timerOn: setInterval(countTime, 1000) });
 }
 
 function stopTimer() {
-  clearInterval(global.timerOn);
-  global.timerOn = null;
+  clearInterval(store.getState().timerOn);
+
+  store.dispatch({
+    type: CLEAR_TIMER,
+    timerOn: null,
+  });
 }
 
 export { startTimer, stopTimer };

@@ -1,27 +1,36 @@
 import { cardsContainerElem, timeElem } from './domElements';
-import global from './globalVariables';
 import { stopTimer } from './timer';
 import generateRandomNumbers from './generateRandomNumbers';
 import createCards from './createCards';
 import handleClick from './handleClick';
 import animateCards from './animateCards';
+import store from './store/store';
+import { ADD_CARDS, DELETE_CARDS, FLUSH_CARDS_PAIR } from './store/actions';
 
 const initGame = () => {
+  const state = store.getState();
+
   cardsContainerElem.innerHTML = '';
-  cardsContainerElem.style.cssText = global.level.numberOfColumns;
-  global.cardsPair = [];
-  global.cards = [];
+  cardsContainerElem.style.cssText = state.level.numberOfColumns;
+
+  store.dispatch({ type: FLUSH_CARDS_PAIR });
+  store.dispatch({ type: DELETE_CARDS });
+
   stopTimer();
   timeElem.innerText = '00:00';
-  const randomNumbers = generateRandomNumbers(global.level.numberOfCards);
-  global.cards = createCards(
+
+  const randomNumbers = generateRandomNumbers(state.level.numberOfCards);
+  const cards = createCards(
     randomNumbers,
     ['card', 'card--hidden', 'card--open'],
     handleClick
   );
-  animateCards(global.cards, 'card--hidden', false, 800);
+
+  store.dispatch({ type: ADD_CARDS, cards });
+
+  animateCards(cards, 'card--hidden', false, 800);
   setTimeout(() => {
-    animateCards(global.cards, 'card--open', false, 2000);
+    animateCards(cards, 'card--open', false, 2000);
   }, 1000);
 };
 

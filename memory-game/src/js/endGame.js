@@ -1,9 +1,10 @@
 import { cardsContainerElem } from './domElements';
 import { stopTimer } from './timer';
-import global from './globalVariables';
 import createCards from './createCards';
 import gameOverMessage from './gameOverMessage';
 import animateCards from './animateCards';
+import store from './store/store';
+import { ADD_CARDS } from './store/actions';
 
 function endGame() {
   cardsContainerElem.innerHTML = '';
@@ -11,8 +12,11 @@ function endGame() {
 
   stopTimer();
 
-  global.cards = createCards(gameOverMessage, ['card'], false);
-  animateCards(global.cards, 'card--open', true, 5000);
+  const cards = createCards(gameOverMessage, ['card'], false);
+
+  store.dispatch({ type: ADD_CARDS, cards });
+
+  animateCards(cards, 'card--open', true, 5000);
 }
 
 export default endGame;
